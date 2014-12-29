@@ -3,7 +3,7 @@ M24M02_EEPROM
 ST Microelectronics' M24M02DRC 2 Mbit I2C EEPROM
 
 Simple sketch to write data to and read data from two ST Microelectronic's M24M02 2 Mbit EEPROMS
-mounted on a small breakout board and hardwired for i2C communication:
+mounted on a small [breakout board](https://www.tindie.com/products/onehorse/m24m02-2-x-256-kbyte-eeprom-add-on-for-teensy-31/) and hardwired for I2C communication:
 
 Teensy 3.1 pin      Breakout Board
 16                      SDA
@@ -15,7 +15,7 @@ The EEPROMS are very low power devices and can handle voltages from 1.8 to 5.5 V
 This means that the breakout board can be used with an Arduino UNO without logic level converters
 but more interestingly can be powered via digitalWrite(HIGH) to VIN and digitalWrite(LOW) to GND
 from any convenient GPIO pins. For the Teensy 3.1, this means that the board can be mounted on the top
-to access I2C pins 16/17 or on the bottom to access I2C pins 18/19a and the power and ground can be
+to access I2C pins 16/17 or on the bottom to access I2C pins 18/19 and the power and ground can be
 taken from pins 8 and 9, or 7 and 6, respectively. 
 
 The two EEPROM devices have different I2C addresses, and the data page access is via part of the device address.
@@ -36,10 +36,9 @@ damage the silicon lattice and affect the memory cells of the chip.
 The 2097152 bits of each EEPROM are organized as 1024 pages (pages 0 - 1023), and 256 bytes (0 - 255) per page. The data are
 accessed via an 18-bit address. This sketch will use four quadrants determined by the 2-bit XSadd, 
 and then the MSadd and LSadd of the remaining 65536 bytes. Thus the 18-bit address of a byte will be
-XSadd << 18 | MSadd << 8 | LSadd. The XSadd will be appended to the device i2C address in the read 
+XSadd << 16 | MSadd << 8 | LSadd. The XSadd will be appended to the device i2C address in the read 
 and write functions.
 
 This sketch demonstrates simple byte, multiple bytes, and page reads and writes.
 
-Here is the M24M02DRC data sheet:
-http://www.st.com/web/en/resource/technical/document/datasheet/CD00290537.pdf
+Here is the M24M02DRC [data sheet.](http://www.st.com/web/en/resource/technical/document/datasheet/CD00290537.pdf)
